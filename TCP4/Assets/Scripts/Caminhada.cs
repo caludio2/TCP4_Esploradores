@@ -1,21 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+
 
 public class Caminhada : MonoBehaviour
 {
-    public TMP_Text text;
-    private bool calibrado;
-    void Start()
+    private bool gyroEnabled;
+    private Gyroscope gyro;
+
+    private GameObject cameraContainer;
+    private Quaternion rot;
+
+    private void Start()
     {
-        Input.gyro.enabled = true; //<== APRONTANDO O SENSOR PARA SER USADO
+        cameraContainer = new GameObject ("Camera Container");
+        cameraContainer.transform.position = transform.position;
+        transform.SetParent (cameraContainer.transform);
+
+        gyroEnabled = EnableGyro ();
     }
 
-    void Update()
+    private bool EnableGyro()
     {
-        
-            text.text = "Calibrado";
-            transform.rotation = Quaternion.Euler(-Input.gyro.attitude.x * 100,-Input.gyro.attitude.y * 100,Input.gyro.attitude.z * 100);
-            print(new Vector3(Input.gyro.attitude.x,Input.gyro.attitude.y,Input.gyro.attitude.z));
+        if (SystemInfo.supportsGyroscope) 
+        {
+            gyro = Input.gyro;
+            gyro.enabled = true;
+
+            cameraContainer.transform.rotation = Quaternion.Euler (90f, 90f, 0f);
+            rot = new Quaternion (0, 0, 1, 0);
+
+            return true;
+        }
+        return false;
+    }
+    private void Update()
+    {
+        if (gyroEnabled)
+        {
+            transform.localRotation = gyro.attitude * rot;
+        }
     }
 }
+
+
