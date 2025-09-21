@@ -8,6 +8,8 @@ public class Caminhada : MonoBehaviour
     private bool gyroEnabled;
     private Gyroscope gyro;
 
+    public Transform targetPosition;
+
     private GameObject cameraContainer;
     private Quaternion rot;
 
@@ -39,6 +41,7 @@ public class Caminhada : MonoBehaviour
         if (gyroEnabled)
         {
             transform.localRotation = gyro.attitude * rot;
+            transform.position = targetPosition.position;
         }
     }
 }

@@ -18,6 +18,11 @@ public class SplineScript : MonoBehaviour
         {
             spline.Play();
         }
+
+        else if (Input.acceleration.y < -dificuldade)
+        {
+            spline.Play();
+        }
         else 
         {
             spline.Pause();
