@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Rodoviaria.unity
+    guid: 39b98569419d94146a8e036fcf393efc
+  - enabled: 1
     path: Assets/Scenes/Foto.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Escalada.unity
+    guid: fb1d3ad0fbe18c8458482c8673aae443
+  - enabled: 1
+    path: Assets/Scenes/Trilha.unity
+    guid: 56d82ee329ce6104eaca7781403ce0ad
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
