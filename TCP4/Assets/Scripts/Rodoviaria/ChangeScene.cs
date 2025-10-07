@@ -5,18 +5,19 @@ public class ChangeScene : MonoBehaviour
 {
     public void Rodoviaria()
     {
-        SceneManager.LoadScene("Rodoviaria", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Rodoviaria");
     }
     public void Trilha()
     {
-        SceneManager.LoadScene("Trilha", LoadSceneMode.Additive);
+        print("trocou de cena efetivamente");
+        SceneManager.LoadScene("Trilha");
     }
     public void Foto()
     {
-        SceneManager.LoadScene("Foto", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Foto");
     }
     public void Pescaria()
     {
-        SceneManager.LoadScene("Pescaria", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Pescaria");
     }
 }
