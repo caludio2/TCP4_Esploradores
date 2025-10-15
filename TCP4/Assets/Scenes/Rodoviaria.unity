@@ -336,6 +336,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &323355294 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5544975649903260997, guid: 8b92d6bef66fa144abdfe5573521a14a, type: 3}
+  m_PrefabInstance: {fileID: 1551693033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &780697018
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,17 +746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
 --- !u!1 &1451865007
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +857,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 882310670554727752, guid: 8b92d6bef66fa144abdfe5573521a14a, type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 323355294}
+    - target: {fileID: 882310670554727752, guid: 8b92d6bef66fa144abdfe5573521a14a, type: 3}
       propertyPath: foto.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -918,7 +916,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6418689719231833887, guid: 8b92d6bef66fa144abdfe5573521a14a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

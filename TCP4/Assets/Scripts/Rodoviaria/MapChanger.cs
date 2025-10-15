@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class MapChanger : MonoBehaviour
 {
@@ -11,34 +12,38 @@ public class MapChanger : MonoBehaviour
 
     [SerializeField]
     ChangeScene changeScene;
+
+    public Camera _cam;
     void Update()
     {
-        Touch touch = Input.GetTouch(0);
-        if (touch.phase == TouchPhase.Ended)
+        if (Input.touchCount > 0)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+            UnityEngine.Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
             {
-                Debug.Log("Mouse hit: " + hit.collider.name);
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer(trilha))
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    print("trocou de cena");
-                    changeScene.Trilha();
-                }
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer(foto))
-                {
-                    changeScene.Foto();
-                }
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer(pescaria))
-                {
-                    changeScene.Pescaria();
+                    print(hit.collider.gameObject.name);
+                    Debug.Log("Mouse hit: " + hit.collider.name);
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer(trilha))
+                    {
+                        print("trocou de cena");
+                        changeScene.Trilha();
+                    }
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer(foto))
+                    {
+                        changeScene.Foto();
+                    }
+                    if (hit.collider.gameObject.layer == LayerMask.NameToLayer(pescaria))
+                    {
+                        changeScene.Pescaria();
+                    }
                 }
             }
         }
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow; // Set the gizmo color
-        Gizmos.DrawLine(transform.position, transform.TransformDirection(Vector3.forward) * 100); // Draw a sphere at the
     }
 }
