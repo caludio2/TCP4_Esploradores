@@ -1157,9 +1157,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
     - target: {fileID: 639763802722577090, guid: e60053903ca64c14097aaca95b79b110, type: 3}
+      propertyPath: onSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
+    - target: {fileID: 639763802722577090, guid: e60053903ca64c14097aaca95b79b110, type: 3}
       propertyPath: OnDestroy
       value: 
       objectReference: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
+    - target: {fileID: 639763802722577090, guid: e60053903ca64c14097aaca95b79b110, type: 3}
+      propertyPath: onDestroy
+      value: 
+      objectReference: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
+    - target: {fileID: 639763802722577090, guid: e60053903ca64c14097aaca95b79b110, type: 3}
+      propertyPath: animalStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cb123ab2680d6c4cb576a34b07fe2a9, type: 2}
     - target: {fileID: 639763802722577090, guid: e60053903ca64c14097aaca95b79b110, type: 3}
       propertyPath: playerTransform
       value: 

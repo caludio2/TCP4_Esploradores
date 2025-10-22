@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f579e56a6908224dbc5f10759b7b63a, type: 3}
   m_Name: RandomAnimal
   m_EditorClassIdentifier: 
-  frequency: 1
-  lifeTime: 10
   viewRange: 10
-  Points: 100
+  frequency: 1
+  listaDeAnimais:
+  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+    chance: 30
+    lifeTime: 10
+    somDeSpawn: {fileID: 8300000, guid: d075dc87c5731f84b9901c46989a8832, type: 3}
+    somDeDestruicao: {fileID: 8300000, guid: d075dc87c5731f84b9901c46989a8832, type: 3}
+  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+    chance: 30
+    lifeTime: 10
+    somDeSpawn: {fileID: 8300000, guid: 0b5df60ae886e094e98121686439b7da, type: 3}
+    somDeDestruicao: {fileID: 8300000, guid: 0b5df60ae886e094e98121686439b7da, type: 3}
+  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+    chance: 40
+    lifeTime: 10
+    somDeSpawn: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
+    somDeDestruicao: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
