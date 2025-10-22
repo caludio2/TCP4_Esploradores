@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f579e56a6908224dbc5f10759b7b63a, type: 3}
   m_Name: RandomAnimal
   m_EditorClassIdentifier: 
-  frequency: 5
+  frequency: 1
   lifeTime: 10
   viewRange: 10
   Points: 100

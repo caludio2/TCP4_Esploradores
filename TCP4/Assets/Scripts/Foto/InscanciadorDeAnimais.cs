@@ -1,66 +1,96 @@
-using System.Collections;
-using Unity.VisualScripting;
+﻿using System.Collections;
 using UnityEngine;
 
 public class InscanciadorDeAnimais : MonoBehaviour
 {
-    [SerializeField]
-    GameObject Animal;
+    [SerializeField] private Animais animalStats;
+    [SerializeField] private Transform playerTransform;
 
-    [SerializeField]
-    Animais AnimalStats;
+    private AudioSource audioSource;
+    private GameObject prefabInstance;
 
-    [SerializeField]
-    Transform playerTransform;
+    private bool canBeSpawned = true;
+    private bool isSpawned = false;
 
-    GameObject prefabInstance;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
-    bool canBeSpawned = true; //CoolDown bool
-
-    bool isSpawned = false;
     void Update()
     {
-        if(Vector3.Distance(transform.position ,playerTransform.position) > AnimalStats.viewRange) //Ta no range?
-        { return; }
+        // Sai se o player estiver fora do alcance
+        if (Vector3.Distance(transform.position, playerTransform.position) > animalStats.viewRange)
+            return;
 
-        print("no range");
+        // Sai se estiver em cooldown ou já tiver um animal ativo
+        if (!canBeSpawned || isSpawned)
+            return;
 
-        if (!canBeSpawned) //Ta no colldown?
-        {  return; }
-
-        if(isSpawned) //Ta spawnado?
-        { return; }
-
-        print("passou aqui");
-
-        canBeSpawned = false; //colldown
+        canBeSpawned = false;
         StartCoroutine(WaitTime());
 
-        int rnd = Random.Range(0, 3);//Chance nao configuravel
-        BeSpawned(rnd);
+        Animais.AnimalInfo escolhido = EscolherAnimalPorProbabilidade();
+        if (escolhido != null)
+            BeSpawned(escolhido);
     }
-    public void BeSpawned(int number)
+
+    void BeSpawned(Animais.AnimalInfo animal)
     {
-        if (number != 0) 
-        { return; }
+        prefabInstance = Instantiate(
+            animal.prefab,
+            transform.position,
+            Quaternion.LookRotation(playerTransform.position - transform.position)
+        );
 
-        prefabInstance = Instantiate(Animal, transform.position, Quaternion.LookRotation(playerTransform.position));
-        StartCoroutine(WaitAndDestroy());
+        isSpawned = true;
+        StartCoroutine(WaitAndDestroy(animal));
 
-        print("Instanciado");
+        // Toca som de spawn
+        if (animal.somDeSpawn != null)
+            audioSource.PlayOneShot(animal.somDeSpawn);
     }
 
     IEnumerator WaitTime()
     {
-        yield return new WaitForSeconds(AnimalStats.frequency);
+        yield return new WaitForSeconds(animalStats.frequency);
         canBeSpawned = true;
     }
 
-    IEnumerator WaitAndDestroy()
+    IEnumerator WaitAndDestroy(Animais.AnimalInfo animal)
     {
-        yield return new WaitForSeconds(AnimalStats.lifeTime);
-        Destroy(prefabInstance);
+        yield return new WaitForSeconds(animal.lifeTime);
+
+        isSpawned = false;
+
+        // Toca som de destruição
+        if (animal.somDeDestruicao != null)
+            audioSource.PlayOneShot(animal.somDeDestruicao);
+
+        if (prefabInstance != null)
+            Destroy(prefabInstance);
     }
 
+    Animais.AnimalInfo EscolherAnimalPorProbabilidade()
+    {
+        var lista = animalStats.listaDeAnimais;
+        if (lista == null || lista.Count == 0)
+            return null;
 
+        float total = 0f;
+        foreach (var a in lista)
+            total += a.chance;
+
+        float sorteio = Random.Range(0, total);
+        float acumulado = 0f;
+
+        foreach (var a in lista)
+        {
+            acumulado += a.chance;
+            if (sorteio <= acumulado)
+                return a;
+        }
+
+        return lista[lista.Count - 1];
+    }
 }

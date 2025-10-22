@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Agua
   - Peixe
+  - Animal
   layers:
   - Default
   - TransparentFX
