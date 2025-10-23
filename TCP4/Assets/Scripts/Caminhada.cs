@@ -24,7 +24,7 @@ public class Caminhada : MonoBehaviour
 
     private bool EnableGyro()
     {
-        if (SystemInfo.supportsGyroscope) 
+        if (SystemInfo.supportsGyroscope)
         {
             gyro = Input.gyro;
             gyro.enabled = true;
