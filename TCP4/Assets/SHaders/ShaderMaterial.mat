@@ -44,10 +44,10 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Noise: 0.22
-    - _Scale: 4.82
-    - _Smothness: -0.22
-    - _SpeedSine: -0.07
+    - _Noise: 0.5
+    - _Scale: 7.03
+    - _Smothness: -2.79
+    - _SpeedSine: 0.22
     m_Colors:
     - _Albeto: {r: 0.22352941, g: 0.6509804, b: 0.49717075, a: 0}
   m_BuildTextureStacks: []
