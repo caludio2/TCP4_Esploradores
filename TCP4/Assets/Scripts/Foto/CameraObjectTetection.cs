@@ -20,8 +20,8 @@ namespace Foto
                     if (viewportPos.z > 0 && viewportPos.x >= 0 && viewportPos.x <= 1 && viewportPos.y >= 0 && viewportPos.y <= 1)
                     {
                         Debug.Log($"Objeto visível: {hit.gameObject.name}");
-
-                        Destroy(hit.gameObject);
+                        if(hit.gameObject.GetComponent<InscanciadorDeAnimais>().isSpawned == true)
+                            Destroy(hit.gameObject);
                     }
                 }
             }

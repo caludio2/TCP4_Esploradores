@@ -10,7 +10,7 @@ public class InscanciadorDeAnimais : MonoBehaviour
     private GameObject prefabInstance;
 
     private bool canBeSpawned = true;
-    private bool isSpawned = false;
+    public bool isSpawned = false;
 
     private void Start()
     {
@@ -42,6 +42,7 @@ public class InscanciadorDeAnimais : MonoBehaviour
             transform.position,
             Quaternion.LookRotation(playerTransform.position - transform.position)
         );
+        prefabInstance.transform.SetParent(this.transform);
 
         isSpawned = true;
         StartCoroutine(WaitAndDestroy(animal));

@@ -20,6 +20,8 @@ namespace Foto
         void Update()
         {
             UnityEngine.Touch touch = Input.GetTouch(0);
+            if (Input.touchCount == 0)
+                return;
             if (touch.phase == TouchPhase.Began)
             {
                 cam.fieldOfView = fovCam;

@@ -15,17 +15,17 @@ MonoBehaviour:
   viewRange: 10
   frequency: 1
   listaDeAnimais:
-  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+  - prefab: {fileID: 919132149155446097, guid: 5bf3679fce3d6c34a9aa1a03767b03d7, type: 3}
     chance: 30
     lifeTime: 10
     somDeSpawn: {fileID: 8300000, guid: d075dc87c5731f84b9901c46989a8832, type: 3}
     somDeDestruicao: {fileID: 8300000, guid: d075dc87c5731f84b9901c46989a8832, type: 3}
-  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+  - prefab: {fileID: 919132149155446097, guid: e7dfd8f48aa413e469e89a5b5fae6f08, type: 3}
     chance: 30
     lifeTime: 10
     somDeSpawn: {fileID: 8300000, guid: 0b5df60ae886e094e98121686439b7da, type: 3}
     somDeDestruicao: {fileID: 8300000, guid: 0b5df60ae886e094e98121686439b7da, type: 3}
-  - prefab: {fileID: 3951868838969569745, guid: 691cbe73f3dbcac40966484676676782, type: 3}
+  - prefab: {fileID: 919132149155446097, guid: d309cac134b0cdb4295031d8b8dfa1c1, type: 3}
     chance: 40
     lifeTime: 10
     somDeSpawn: {fileID: 8300000, guid: 16a07621d1bc9a846bb265d15fb71f4c, type: 3}
