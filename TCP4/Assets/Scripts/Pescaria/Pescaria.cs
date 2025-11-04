@@ -59,7 +59,7 @@ public class Pescaria : MonoBehaviour
                     print("Lançou a isca!");
                     curremtIsca = Instantiate(isca, transform.position, Quaternion.identity);
                     Rigidbody iscaRigidBody = curremtIsca.GetComponent<Rigidbody>();
-                    iscaRigidBody.AddForce((transform.forward + new Vector3(0, 1, 0)) * upForce * intensidade, ForceMode.Impulse);
+                    iscaRigidBody.AddForce(((transform.forward) * upForce * intensidade) + new Vector3(0, 1, 0), ForceMode.Impulse);
                     estadoAtual = EstadoPesca.EsperandoPuxar;
                     tempoDesdeUltimoGesto = 0f;
                 }
