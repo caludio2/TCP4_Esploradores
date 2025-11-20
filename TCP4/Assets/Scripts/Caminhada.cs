@@ -41,7 +41,8 @@ public class Caminhada : MonoBehaviour
         if (gyroEnabled)
         {
             transform.localRotation = gyro.attitude * rot;
-            transform.position = targetPosition.position;
+            if(targetPosition != null)
+                transform.position = targetPosition.position;
         }
     }
 }
