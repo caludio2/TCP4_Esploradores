@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: teste 1
   m_EditorClassIdentifier: 
   Title: ddddddddddddd
-  Points: 0
+  StarNumber: 1
+  Points: 1
   Description: ddddddddddddddddd

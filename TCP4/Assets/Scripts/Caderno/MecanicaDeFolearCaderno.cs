@@ -2,14 +2,16 @@ using JetBrains.Annotations;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class MecanicaDeFolearCaderno : MonoBehaviour
 {
     [Header("Display")]
     #region Display
+    [SerializeField] GameObject[] starsDisplay;
     [SerializeField] TextMeshProUGUI minigameName;
-    [SerializeField] Image minigameThumbnail;
+    [SerializeField] RawImage minigameThumbnail;
     [SerializeField] TextMeshProUGUI PointsDisplay;
     [SerializeField] TextMeshProUGUI Description;
     #endregion
@@ -18,6 +20,7 @@ public class MecanicaDeFolearCaderno : MonoBehaviour
     [Header("page")]
     #region page
     [SerializeField] PaginaData[] pagnasInfo;
+    [SerializeField] Texture2D[] thumb;
     int currentPageNumber;
     #endregion
 
@@ -32,18 +35,75 @@ public class MecanicaDeFolearCaderno : MonoBehaviour
     public float duration = 1f;
     #endregion
 
+    private Vector2 startPos;
+    private float minSwipeDistance = 50f;
+
+    public bool? swipeRight = null;
+
     public void Update()
     {
         int pageIndex = ChangePage();
+        VerifySuwip();
+    }
+
+    void DetectSwipe(Vector2 swipeDelta)
+    {
+        if (swipeDelta.magnitude < minSwipeDistance)
+            return; // se arrastou pouco, ignora
+
+        if (Mathf.Abs(swipeDelta.x) > Mathf.Abs(swipeDelta.y))
+        {
+            // Movimento horizontal
+            if (swipeDelta.x > 0)
+            {
+                swipeRight = true;
+                backPage();
+                Debug.Log("Swipe para DIREITA");
+            }
+            else
+            {
+                swipeRight = false;
+                passPage();
+                Debug.Log("Swipe para ESQUERDA");
+            }
+        }
+    }
+
+    public void VerifySuwip()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                startPos = touch.position;
+                swipeRight = null;
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                Vector2 endPos = touch.position;
+                DetectSwipe(endPos - startPos);
+            }
+        }
     }
 
     private void UpdateBookPageDisplay(int pageIndex)
     {
         StartCoroutine(FadeIn());
         minigameName.text = pagnasInfo[pageIndex].Title;
-        minigameThumbnail = pagnasInfo[pageIndex].minigameThumbnail;
-        PointsDisplay.text = pagnasInfo[pageIndex].Points.ToString();
-        Description.text = pagnasInfo[pageIndex].Description;
+        for(int i = 0; i < starsDisplay.Length; i++)
+        {
+            if(i < pagnasInfo[pageIndex].StarNumber)
+                starsDisplay[i].SetActive(true);
+            else starsDisplay[i].SetActive(false);
+        }
+        minigameThumbnail.texture = thumb[pageIndex];
+        int temp = pagnasInfo[pageIndex].Points;
+        PointsDisplay.text = temp.ToString();
+        if (pagnasInfo[pageIndex].StarNumber > 0)
+            Description.text = pagnasInfo[pageIndex].Description;
+        else Description.text = "";
     }
 
     public void backPage()

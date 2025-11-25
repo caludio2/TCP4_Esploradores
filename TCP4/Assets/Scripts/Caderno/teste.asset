@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a09a39cfc00a04d994ad5a289fc658, type: 3}
   m_Name: teste
   m_EditorClassIdentifier: 
-  Title: aaaaa
-  Points: 0
-  Description: aaaaaaaaaa
+  Title: Trilha
+  StarNumber: 0
+  Points: 500
+  Description: "Anaet\xEA"

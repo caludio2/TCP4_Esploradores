@@ -6,7 +6,9 @@ public class PaginaData : ScriptableObject
 {
     public string Title;
 
-    public Image minigameThumbnail;
+    public int StarNumber;
+
+    public UnityEngine.UIElements.Image minigameThumbnail;
 
     public int Points;
 
