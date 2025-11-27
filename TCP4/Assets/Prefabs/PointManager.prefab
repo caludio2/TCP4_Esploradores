@@ -47,3 +47,7 @@ MonoBehaviour:
   pescariaPoints: 1
   trilhaPoints: 0
   fotoPoints: 0
+  paginaDatas:
+  - {fileID: 11400000, guid: 50561a8d22d1a4943b668ec6210ae4e8, type: 2}
+  - {fileID: 11400000, guid: c7d50a6539c7038449ed5a4d475a7674, type: 2}
+  - {fileID: 11400000, guid: 318a5a96c411a4c40bef79043c5f6d39, type: 2}

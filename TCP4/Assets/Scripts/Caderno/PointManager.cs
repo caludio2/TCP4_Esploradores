@@ -1,12 +1,15 @@
 using UnityEditor.Overlays;
 using UnityEngine;
 using System.IO;
+using Mono.Cecil;
 
 public class PointManager : MonoBehaviour
 {
-    public int pescariaPoints = 1;
+    public int pescariaPoints;
     public int trilhaPoints;
     public int fotoPoints;
+
+    public PaginaData[] paginaDatas;
 
     public static PointManager Instance { get; private set; }
 
@@ -29,22 +32,29 @@ public class PointManager : MonoBehaviour
         LoadGame();
     }
 
+    public void Update()
+    {
+        pescariaPoints = paginaDatas[0].Points;
+        trilhaPoints = paginaDatas[1].Points;
+        fotoPoints = paginaDatas[2].Points;
+    }
+
     public void SetPoints(string minigameName ,int points)
     {
         switch (minigameName)
         {
             case "pescariaPoints":
-                 pescariaPoints = points;
+                paginaDatas[0].Points = points;
                 if (pescariaPoints > points)
                     LoadGame();
             break;
             case "trilhaPoints":
-                trilhaPoints = points;
+                paginaDatas[1].Points = points;
                 if (trilhaPoints > points)
                     LoadGame();
                 break;
             case "fotoPoints":
-                fotoPoints = points;
+                paginaDatas[2].Points = points;
                 if (fotoPoints > points)
                     LoadGame();
                 break;

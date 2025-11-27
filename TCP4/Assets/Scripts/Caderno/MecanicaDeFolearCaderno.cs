@@ -19,7 +19,6 @@ public class MecanicaDeFolearCaderno : MonoBehaviour
     [Header("")]
     [Header("page")]
     #region page
-    [SerializeField] PaginaData[] pagnasInfo;
     [SerializeField] Texture2D[] thumb;
     int currentPageNumber;
     #endregion
@@ -91,18 +90,23 @@ public class MecanicaDeFolearCaderno : MonoBehaviour
     private void UpdateBookPageDisplay(int pageIndex)
     {
         StartCoroutine(FadeIn());
-        minigameName.text = pagnasInfo[pageIndex].Title;
-        for(int i = 0; i < starsDisplay.Length; i++)
+
+        minigameName.text = PointManager.Instance.paginaDatas[pageIndex].Title;
+
+        for (int i = 0; i < starsDisplay.Length; i++)
         {
-            if(i < pagnasInfo[pageIndex].StarNumber)
+            if(PointManager.Instance.paginaDatas[pageIndex].Points > PointManager.Instance.paginaDatas[pageIndex].PointsPerStar[i])
                 starsDisplay[i].SetActive(true);
             else starsDisplay[i].SetActive(false);
         }
+
         minigameThumbnail.texture = thumb[pageIndex];
-        int temp = pagnasInfo[pageIndex].Points;
+
+        int temp = PointManager.Instance.paginaDatas[pageIndex].Points;
         PointsDisplay.text = temp.ToString();
-        if (pagnasInfo[pageIndex].StarNumber > 0)
-            Description.text = pagnasInfo[pageIndex].Description;
+
+        if (PointManager.Instance.paginaDatas[pageIndex].Points > PointManager.Instance.paginaDatas[pageIndex].PointsPerStar[0])
+            Description.text = PointManager.Instance.paginaDatas[pageIndex].Description;
         else Description.text = "";
     }
 
@@ -127,9 +131,9 @@ public class MecanicaDeFolearCaderno : MonoBehaviour
     {
         if(currentPageNumber < 0)
         {
-            currentPageNumber = pagnasInfo.Length - 1;
+            currentPageNumber = PointManager.Instance.paginaDatas.Length - 1;
         }
-        if(currentPageNumber > pagnasInfo.Length - 1)
+        if(currentPageNumber > PointManager.Instance.paginaDatas.Length - 1)
         {
             currentPageNumber = 0;
         }
