@@ -1,7 +1,4 @@
-using UnityEditor.Overlays;
 using UnityEngine;
-using System.IO;
-using Mono.Cecil;
 
 public class PointManager : MonoBehaviour
 {
@@ -66,7 +63,7 @@ public class PointManager : MonoBehaviour
         SaveGame();
     }
 
-    void SaveGame()
+    public void SaveGame()
     {
         SaveData data = new SaveData();
         data.pescariaPoints = pescariaPoints;

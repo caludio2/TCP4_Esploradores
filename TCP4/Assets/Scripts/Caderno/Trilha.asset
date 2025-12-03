@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a09a39cfc00a04d994ad5a289fc658, type: 3}
   m_Name: Trilha
   m_EditorClassIdentifier: 
-  Title: aaaa
+  Title: Trilha
   PointsPerStar: 0000000064000000e8030000
-  Points: 1
+  Points: 68
   Description: ddddddddddddddddd
