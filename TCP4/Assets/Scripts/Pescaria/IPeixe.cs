@@ -7,5 +7,5 @@ public class IPeixe : MonoBehaviour
 
     public float vel;
 
-    public Vector3 iscaPos;
+    public Transform iscaPos;
 }

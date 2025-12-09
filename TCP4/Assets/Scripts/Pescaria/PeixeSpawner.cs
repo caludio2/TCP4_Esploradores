@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PeixeSpawner : MonoBehaviour
 {
-    public Pescaria playerRef;
+    public PescariaReformulada playerRef;
 
     [SerializeField]
     GameObject[] Peixes;
@@ -17,18 +17,18 @@ public class PeixeSpawner : MonoBehaviour
     [Range(0f, 100f)]
     public float minRange;
 
+    GameObject peixeInstance;
+
     private enum EstadoPeixe { PeixeSpawndado , PeixeDesPawndo }
     private EstadoPeixe estadoAtual = EstadoPeixe.PeixeDesPawndo;
     void Update()
     {
-        switch (estadoAtual)
-        {
-            case EstadoPeixe.PeixeDesPawndo: // peixe ainda nao spawndo
-                if (playerRef.GetComponent<Pescaria>().curremtIsca != null)//isca foi lançada
+            if(peixeInstance == null) // peixe ainda nao spawndo
+                if (playerRef.GetComponent<PescariaReformulada>().currentIsca != null)//isca foi lançada
                 {
-                    Vector3 iscaPos = playerRef.GetComponent<Pescaria>().curremtIsca.GetComponent<isca>().inpactPos;
+                    Vector3 iscaPos = playerRef.currentIsca.GetComponent<isca>().inpactPos;
                     print(playerRef.name);
-                    if (playerRef.GetComponent<Pescaria>().curremtIsca.GetComponent<isca>().fizgou == false && iscaPos != new Vector3(0,0,0))//isca foi fizgada
+                    if (playerRef.GetComponent<PescariaReformulada>().currentIsca.GetComponent<isca>().fizgou == false && iscaPos != new Vector3(0,0,0))//isca foi fizgada
                     {
                         print("fizgou = false");
                         float angle = Random.Range(0f, 2f * Mathf.PI);
@@ -44,15 +44,10 @@ public class PeixeSpawner : MonoBehaviour
 
                         
                         print("spawnou");
-                        GameObject peixeInstance = Instantiate(Peixes[Random.Range(0, Peixes.Length)], iscaPos + spawnPosition, Quaternion.LookRotation(iscaPos - spawnPosition));
-                        peixeInstance.GetComponent<IPeixe>().iscaPos = iscaPos;
+                        peixeInstance = Instantiate(Peixes[Random.Range(0, Peixes.Length)], iscaPos + spawnPosition, Quaternion.LookRotation(iscaPos - spawnPosition));
+                        peixeInstance.GetComponent<IPeixe>().iscaPos = playerRef.currentIsca.transform;
                         estadoAtual = EstadoPeixe.PeixeSpawndado;
                     }
                 }
-                break;
-            case EstadoPeixe.PeixeSpawndado:
-                break;
-
         }
     }
-}
