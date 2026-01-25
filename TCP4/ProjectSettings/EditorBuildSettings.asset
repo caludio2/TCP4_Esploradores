@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pescaria.unity
     guid: 4b5968c9fdfdde74cae9bc4a6d986b86
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 6247c55caa3324b4bbc092a00778ff58
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 9d16004a1dbccfb4baa184ab723225d7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
