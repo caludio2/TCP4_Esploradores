@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a09a39cfc00a04d994ad5a289fc658, type: 3}
   m_Name: Foto
   m_EditorClassIdentifier: 
-  Title: ddddddddddddd
+  Title: Foto
   PointsPerStar: 0000000064000000e8030000
-  Points: 1
-  Description: ddddddddddddddddd
+  Points: 0
+  Description: "O Morro Azul \xE9 um dos pontos mais altos da regi\xE3o, famoso pelo
+    voo livre e pela vista ampla da Serra do Mar.                     O Vale do Caf\xE9
+    \xE9 uma regi\xE3o hist\xF3rica marcada pelo ciclo do caf\xE9 no s\xE9culo XIX,
+    hoje voltada ao turismo cultural com fazendas coloniais restauradas."
